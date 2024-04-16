@@ -64,3 +64,18 @@ class Scene {
         console.warn('no choice handler on scene ', this);
     }
 }
+
+
+
+class GameItem {
+    constructor(itemName, use, introMsg) {
+        this.itemName = itemName; 
+        this.use = use;
+        this.intm = introMsg;
+    }
+
+    describe() {
+        return ('You found [' + this.itemName + ']');
+    }
+
+}

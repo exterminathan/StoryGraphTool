@@ -1,58 +1,141 @@
 {
-    "Title": "Campus Life on the West Side",
-    "Credits": "Created by Adam Smith (amsmith@ucsc.edu).",
-    "InitialLocation": "Kresge",
+    "Title": "USA Road Trip",
+    "Credits": "Created by Nate Shturm (nshturm@ucsc.edu)",
+    "InitialLocation": "San Francisco",
     "Locations": {
-        "Kresge": {
-            "Body": "This is Kresge College, lots of nice trees.",
+        "Secret Chamber": {
+            "Body": "You've discovered a secret chamber beneath the city. The air is cool and still. On a pedestal, an ancient key lies.",
             "Choices": [
                 {
-                    "Text": "South",
-                    "Target": "Porter"
-                }
-            ]
-        },
-        "Porter": {
-            "Body": "This is Porter College, the trees are nice here too.",
-            "Choices": [
-                {
-                    "Text": "North",
-                    "Target": "Kresge"
+                    "Text": "Pick up the ancient key",
+                    "Target": "Sacramento",
+                    "Item": "AncientKey"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Rachel Carson"
+                    "Text": "Return to Sacramento",
+                    "Target": "Sacramento"
                 }
             ]
         },
-        "Rachel Carson": {
-            "Body": "Rachel Carson College, more sun and fewer trees.",
+        "San Francisco": {
+            "Body": "San Francisco, the starting point of our trip.",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Porter"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Oakes"
+                    "Text": "East to Sacramento",
+                    "Target": "Sacramento"
                 }
             ]
         },
-        "Oakes": {
-            "Body": "Oakes College, even the buildings have tree bark on them.",
+        "Sacramento": {
+            "Body": "Sacramento, the heart of California.",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Rachel Carson"
+                    "Text": "West to San Francisco",
+                    "Target": "San Francisco"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Beyond"
+                    "Text": "East to Salt Lake City",
+                    "Target": "Salt Lake City"
+                },
+                {
+                    "Text": "Discover the secret door",
+                    "Target": "Secret Chamber"
                 }
             ]
         },
-        "Beyond": {
-            "Body": "Grass, don't forget to check for ticks!"
+        "Salt Lake City": {
+            "Body": "Salt Lake City, we have a big salt lake",
+            "Choices": [
+                {
+                    "Text": "West to Sacramento",
+                    "Target": "Sacramento"
+                },
+                {
+                    "Text": "East to Denver",
+                    "Target": "Denver"
+                }
+            ]
+        },
+        "Denver": {
+            "Body": "Denver, known for the music scene.",
+            "Choices": [
+                {
+                    "Text": "West to Salt Lake City",
+                    "Target": "Salt Lake City"
+                },
+                {
+                    "Text": "East to Kansas City",
+                    "Target": "Kansas City"
+                }
+            ]
+        },
+        "Kansas City": {
+            "Body": "Kansas City, famous for... uh... fountains?",
+            "Choices": [
+                {
+                    "Text": "West to Denver",
+                    "Target": "Denver"
+                },
+                {
+                    "Text": "East to St. Louis",
+                    "Target": "St. Louis"
+                }
+            ]
+        },
+        "St. Louis": {
+            "Body": "St. Louis, we have the mirror arch!",
+            "Choices": [
+                {
+                    "Text": "West to Kansas City",
+                    "Target": "Kansas City"
+                },
+                {
+                    "Text": "East to Chicago",
+                    "Target": "Chicago"
+                }
+            ]
+        },
+        "Chicago": {
+            "Body": "Chicago, we have the mirror bean!",
+            "Choices": [
+                {
+                    "Text": "West to St. Louis",
+                    "Target": "St. Louis"
+                },
+                {
+                    "Text": "East to New York",
+                    "Target": "New York"
+                }
+            ]
+        },
+        "New York": {
+            "Body": "New York, end of the line....",
+            "Choices": [
+                {
+                    "Text": "Use the ancient key",
+                    "Target": "Speakeasy",
+                    "Requires": "AncientKey"
+                },
+                {
+                    "Text": "Return to Chicago",
+                    "Target": "Chicago"
+                }
+            ]
+        },
+        "Speakeasy": {
+            "Body": "A secret New York speakeasy! I didn't know these still exist..",
+            "Choices": [
+                {
+                    "Text": "Return to New York",
+                    "Target": "New York"
+                }
+            ]
+        }
+
+    },
+    "Items": {
+        "AncientKey": {
+            "Description": "An ancient key with mysterious engravings."
         }
     }
 }
