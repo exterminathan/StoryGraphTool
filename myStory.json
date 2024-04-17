@@ -3,20 +3,6 @@
     "Credits": "Created by Nate Shturm (nshturm@ucsc.edu)",
     "InitialLocation": "San Francisco",
     "Locations": {
-        "Secret Chamber": {
-            "Body": "You've discovered a secret chamber beneath the city. The air is cool and still. On a pedestal, an ancient key lies.",
-            "Choices": [
-                {
-                    "Text": "Pick up the ancient key",
-                    "Target": "Sacramento",
-                    "Item": "AncientKey"
-                },
-                {
-                    "Text": "Return to Sacramento",
-                    "Target": "Sacramento"
-                }
-            ]
-        },
         "San Francisco": {
             "Body": "San Francisco, the starting point of our trip.",
             "Choices": [
@@ -38,8 +24,8 @@
                     "Target": "Salt Lake City"
                 },
                 {
-                    "Text": "Discover the secret door",
-                    "Target": "Secret Chamber"
+                    "Text": "A suspicious-looking button",
+                    "Target": "Hidden Chamber"
                 }
             ]
         },
@@ -130,12 +116,33 @@
                     "Target": "New York"
                 }
             ]
+        },
+        "Hidden Chamber": {
+            "Body": "You've discovered a hidden chamber beneath the city. The air is cool and still. On a pedestal, an ancient key lies.",
+            "Choices": [
+                {
+                    "Text": "Pick up the ancient key",
+                    "Target": "Sacramento",
+                    "Item": "AncientKey"
+                },
+                {
+                    "Text": "Return to Sacramento",
+                    "Target": "Sacramento"
+                }
+            ]
         }
 
-    },
+    },  
     "Items": {
         "AncientKey": {
-            "Description": "An ancient key with mysterious engravings."
+            "Description": "An ancient key with mysterious engravings.",
+            "InitialLocation": "Hidden Chamber",
+            "pickedUp": false
+        },
+        "Antique Lamp": {
+            "Description": "A funny lookin old lamp. I guess I could use some light in my life.",
+            "InitialLocation": "St. Louis",
+            "pickedUp": false
         }
     }
 }
