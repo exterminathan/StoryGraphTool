@@ -1,11 +1,9 @@
 class Engine {
-
     static load(...args) {
         window.onload = () => new Engine(...args);
     }
 
     constructor(firstSceneClass, storyDataUrl) {
-
         this.firstSceneClass = firstSceneClass;
         this.storyDataUrl = storyDataUrl;
 
@@ -13,42 +11,41 @@ class Engine {
         this.output = document.body.appendChild(document.createElement("div"));
         this.actionsContainer = document.body.appendChild(document.createElement("div"));
 
-        fetch(storyDataUrl).then(
-            (response) => response.json()
-        ).then(
-            (json) => {
-                this.storyData = json;
+        fetch(storyDataUrl).then(response => response.json()).then(json => {
+            this.storyData = json;
+            this.sceneMap = {
+                "Start": Start,
+                "Location": Location,
+                "SecretChamber": SecretChamber,
+                "Speakeasy": Speakeasy,
+                "KansasCity": KansasCity,
+                "End": End
+            };
+            this.gotoScene(this.firstSceneClass, this.storyData.InitialLocation);
+        });
 
-                this.sceneMap = {
-                    "Start": Start,
-                    "Location": Location,
-                    "SecretChamber": SecretChamber,
-                    "End": End
-                }
 
-                this.gotoScene(this.firstSceneClass, this.storyData.InitialLocation);
-            }
-        );
+        console.log('lolz');
     }
 
     gotoScene(sceneClass, dataKey) {
         if (typeof sceneClass === 'string') {
             sceneClass = this.sceneMap[sceneClass] || Location;
         }
-        const data = this.storyData.Locations[dataKey]
+        const data = this.storyData.Locations[dataKey];
         this.scene = new sceneClass(this);
-        this.scene.create(dataKey,);
+        this.scene.create(dataKey, data);
     }
 
-    addChoice(action, data) {
+    addChoice(text, choiceData) {
         let button = this.actionsContainer.appendChild(document.createElement("button"));
-        button.innerText = action;
+        button.innerText = text;
         button.onclick = () => {
-            while(this.actionsContainer.firstChild) {
-                this.actionsContainer.removeChild(this.actionsContainer.firstChild)
+            while (this.actionsContainer.firstChild) {
+                this.actionsContainer.removeChild(this.actionsContainer.firstChild);
             }
-            this.scene.handleChoice(data);
-        }
+            this.scene.handleChoice(choiceData);
+        };
     }
 
     setTitle(title) {
@@ -66,13 +63,28 @@ class Engine {
 class Scene {
     constructor(engine) {
         this.engine = engine;
+        
     }
 
-    create() { }
+    create(dataKey, data) {
+        this.engine.setTitle(this.engine.storyData.Title);
+        this.engine.show(data.Body);
 
-    update() { }
+        if (data.Choices) {
+            for (let choice of data.Choices) {
+                this.engine.addChoice(choice.Text, choice);
+            }
+        } else {
+            this.engine.addChoice("The end.", null);
+        }
+    }
 
-    handleChoice(action) {
-        console.warn('no choice handler on scene ', this);
+    handleChoice(choice) {
+        if (choice) {
+            this.engine.show("> " + choice.Text);
+            this.engine.gotoScene(choice.SceneType || "Location", choice.Target);
+        } else {
+            this.engine.gotoScene("End");
+        }
     }
 }

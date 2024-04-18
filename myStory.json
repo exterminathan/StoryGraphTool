@@ -59,12 +59,13 @@
                 {
                     "Text": "East to Kansas City",
                     "Target": "Kansas City",
-                    "SceneType": "Location"
+                    "SceneType": "KansasCity"
                 }
             ]
         },
         "Kansas City": {
-            "Body": "Kansas City, famous for... uh... fountains?",
+            "Body": "Kansas City, famous for... I can't even see a thing! Doesn't this city have lights???",
+            "Body2": "I can see everything now! Kansas City has so many fountains!!",
             "Choices": [
                 {
                     "Text": "West to Denver",
@@ -84,7 +85,7 @@
                 {
                     "Text": "West to Kansas City",
                     "Target": "Kansas City",
-                    "SceneType": "Location"
+                    "SceneType": "KansasCity"
                 },
                 {
                     "Text": "East to Chicago",
@@ -112,14 +113,20 @@
             "Body": "New York, end of the line....",
             "Choices": [
                 {
-                    "Text": "Use the ancient key",
+                    "Text": "Enter the Speakeasy",
                     "Target": "Speakeasy",
+                    "SceneType": "Speakeasy",
                     "Requires": "AncientKey"
                 },
                 {
                     "Text": "Return to Chicago",
                     "Target": "Chicago",
                     "SceneType": "Location"
+                },
+                {
+                    "Text": "Onwards to new beginnings...",
+                    "Target": "End",
+                    "SceneType": "End"
                 }
             ]
         },
@@ -135,7 +142,8 @@
             "NoLamp": [
                 {
                     "Text": "Pickup Antique Lamp",
-                    "Target": "Speakeasy"
+                    "Target": "Speakeasy",
+                    "SceneType": "Speakeasy"
                 }
             ],
             "Variables": [
@@ -145,7 +153,8 @@
             ]
         },
         "SecretChamber": {
-            "Body": "You've discovered a hidden chamber beneath the city. The air is cool and still. On a pedestal, an ancient key lies.",
+            "Body": "You've discovered a hidden chamber beneath the city. The air is cool and still.",
+            "Body2": "You've discovered a hidden chamber beneath the city. The air is cool and still. On a pedestal, an ancient key lies.",
             "Choices": [
                 {
                     "Text": "Return to Sacramento",
@@ -157,7 +166,7 @@
                 {
                     "Text": "Pick up the ancient key",
                     "Target": "SecretChamber",
-                    "SceneType": "SecretChamber",
+                    "SceneType": "Location",
                     "Item": "AncientKey"
                 }
             ],
