@@ -18,22 +18,26 @@ class Engine {
         ).then(
             (json) => {
                 this.storyData = json;
-                Object.keys(this.storyData.Items).forEach(itemKey => {
-                    this.storyData.Items[itemKey].pickedUp = false;
-                });
-                this.gotoScene(firstSceneClass)
+
+                this.sceneMap = {
+                    "Start": Start,
+                    "Location": Location,
+                    "SecretChamber": SecretChamber,
+                    "End": End
+                }
+
+                this.gotoScene(this.firstSceneClass, this.storyData.InitialLocation);
             }
         );
     }
 
-
-    scrollToBottom() {
-        this.output.scrollTop = this.output.scrollHeight;
-    }
-
-    gotoScene(sceneClass, data) {
+    gotoScene(sceneClass, dataKey) {
+        if (typeof sceneClass === 'string') {
+            sceneClass = this.sceneMap[sceneClass] || Location;
+        }
+        const data = this.storyData.Locations[dataKey]
         this.scene = new sceneClass(this);
-        this.scene.create(data);
+        this.scene.create(dataKey,);
     }
 
     addChoice(action, data) {
@@ -44,17 +48,6 @@ class Engine {
                 this.actionsContainer.removeChild(this.actionsContainer.firstChild)
             }
             this.scene.handleChoice(data);
-            this.scrollToBottom();
-        }
-    }
-
-    removeChoice(choiceText) {
-        const buttons = this.actionsContainer.childNodes;
-        for (let i = 0; i < buttons.length; i++) {
-            if (buttons[i].innerText === choiceText) {
-                this.actionsContainer.removeChild(buttons[i]);
-                break;
-            }
         }
     }
 
@@ -67,7 +60,6 @@ class Engine {
         let div = document.createElement("div");
         div.innerHTML = msg;
         this.output.appendChild(div);
-        this.scrollToBottom();
     }
 }
 
@@ -83,21 +75,4 @@ class Scene {
     handleChoice(action) {
         console.warn('no choice handler on scene ', this);
     }
-}
-
-
-
-class GameItem {
-    constructor(itemName, use, pickedUp, introMsg, initLocation) {
-        this.itemName = itemName; 
-        this.use = use;
-        this.pickedUp = pickedUp;
-        this.intm = introMsg;
-        this.initLocation = initLocation;
-    }
-
-    describe() {
-        return ('You found [' + this.itemName + ']');
-    }
-
 }

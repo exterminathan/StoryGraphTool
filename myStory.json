@@ -8,7 +8,8 @@
             "Choices": [
                 {
                     "Text": "East to Sacramento",
-                    "Target": "Sacramento"
+                    "Target": "Sacramento",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -17,15 +18,18 @@
             "Choices": [
                 {
                     "Text": "West to San Francisco",
-                    "Target": "San Francisco"
+                    "Target": "San Francisco",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "East to Salt Lake City",
-                    "Target": "Salt Lake City"
+                    "Target": "Salt Lake City",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "A suspicious-looking button",
-                    "Target": "Hidden Chamber"
+                    "Target": "SecretChamber",
+                    "SceneType": "SecretChamber"
                 }
             ]
         },
@@ -34,11 +38,13 @@
             "Choices": [
                 {
                     "Text": "West to Sacramento",
-                    "Target": "Sacramento"
+                    "Target": "Sacramento",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "East to Denver",
-                    "Target": "Denver"
+                    "Target": "Denver",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -47,11 +53,13 @@
             "Choices": [
                 {
                     "Text": "West to Salt Lake City",
-                    "Target": "Salt Lake City"
+                    "Target": "Salt Lake City",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "East to Kansas City",
-                    "Target": "Kansas City"
+                    "Target": "Kansas City",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -60,11 +68,13 @@
             "Choices": [
                 {
                     "Text": "West to Denver",
-                    "Target": "Denver"
+                    "Target": "Denver",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "East to St. Louis",
-                    "Target": "St. Louis"
+                    "Target": "St. Louis",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -73,11 +83,13 @@
             "Choices": [
                 {
                     "Text": "West to Kansas City",
-                    "Target": "Kansas City"
+                    "Target": "Kansas City",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "East to Chicago",
-                    "Target": "Chicago"
+                    "Target": "Chicago",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -86,11 +98,13 @@
             "Choices": [
                 {
                     "Text": "West to St. Louis",
-                    "Target": "St. Louis"
+                    "Target": "St. Louis",
+                    "SceneType": "Location"
                 },
                 {
                     "Text": "East to New York",
-                    "Target": "New York"
+                    "Target": "New York",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -104,7 +118,8 @@
                 },
                 {
                     "Text": "Return to Chicago",
-                    "Target": "Chicago"
+                    "Target": "Chicago",
+                    "SceneType": "Location"
                 }
             ]
         },
@@ -113,36 +128,45 @@
             "Choices": [
                 {
                     "Text": "Return to New York",
-                    "Target": "New York"
+                    "Target": "New York",
+                    "SceneType": "Location"
+                }
+            ],
+            "NoLamp": [
+                {
+                    "Text": "Pickup Antique Lamp",
+                    "Target": "Speakeasy"
+                }
+            ],
+            "Variables": [
+                {
+                    "haveAntiqueLamp": false
                 }
             ]
         },
-        "Hidden Chamber": {
+        "SecretChamber": {
             "Body": "You've discovered a hidden chamber beneath the city. The air is cool and still. On a pedestal, an ancient key lies.",
             "Choices": [
                 {
-                    "Text": "Pick up the ancient key",
-                    "Target": "Sacramento",
-                    "Item": "AncientKey"
-                },
-                {
                     "Text": "Return to Sacramento",
-                    "Target": "Sacramento"
+                    "Target": "Sacramento",
+                    "SceneType": "Location"
+                }
+            ],
+            "NoKey": [
+                {
+                    "Text": "Pick up the ancient key",
+                    "Target": "SecretChamber",
+                    "SceneType": "SecretChamber",
+                    "Item": "AncientKey"
+                }
+            ],
+            "Variables": [
+                {
+                    "haveAncientKey": false
                 }
             ]
         }
 
-    },  
-    "Items": {
-        "AncientKey": {
-            "Description": "An ancient key with mysterious engravings.",
-            "InitialLocation": "Hidden Chamber",
-            "pickedUp": false
-        },
-        "Antique Lamp": {
-            "Description": "A funny lookin old lamp. I guess I could use some light in my life.",
-            "InitialLocation": "St. Louis",
-            "pickedUp": false
-        }
     }
 }
